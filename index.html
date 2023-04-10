@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>猪猪</title>
+    <!--<link rel = "shortcut icon" href="favicon.ico">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <link href="static/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="all">
+    <link href="static/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="static/js/vue.min.js"></script>   
+    <script async="" src="static/js/js.js"></script>
+    
+
+</head>
+
+<section class="main-banner" id="home">
+    <div class="container">
+        <div class="baner-info-w3ls text-left">
+            <h1><a href="https://xn--6-n61ca.com">猪猪</a></h1>
+            <h6 class="mx-auto mt-4">没有时间的束缚，没有繁琐的套餐，我们努力让一切变得简单。 请随我们一起进入中土世界...</h6>
+            <span class="btn btn-primary mt-lg-5 mt-3 agile-link-bnr scroll"  role="button" @click="tosubmit">立即进入</span> 
+            <span class="btn btn-primary mt-lg-5 mt-3 agile-link-bnr scroll"  role="button" @click="tosubmit1">备用入口1</span> 
+            <span class="btn btn-primary mt-lg-5 mt-3 agile-link-bnr scroll"  role="button" @click="todown">发卡网</span>
+        </div>
+    </div>
+</section>
+
+<script>
+    var app = new Vue({
+        el:"#home",
+        mounted(){
+            console.log('页面触发')
+            //页面被访问时触发
+            let allurl = window.location.href
+            //获取参数
+            this.parmas = allurl.split(this.base_url)[1]
+            
+        },
+        data:{
+            base_url:'xn--6-n61ca.com',
+            parmas:'',   //动态链接参数
+            to_next_url:'https://adobe.zhuzhu12.com',   //按钮1
+			to_next_url1:'https://adobe.zhuzhu12.com',   //按钮2
+            download_app_url:'https://faka.shyku.com',   //按钮3
+        },
+        methods: {
+            tosubmit(){
+                console.log(window.location.href)
+                
+                let url = ''
+                if(this.parmas != ''){
+                    url = this.to_next_url + this.parmas
+                    //处理斜杠问题
+                    let out_url = url.replace("/?","?")
+                    //console.log(url,out_url)
+                    window.open(out_url)
+                }else{
+                    window.open(this.to_next_url)
+                }
+            },
+            tosubmit1(){
+                console.log(window.location.href)
+                
+                let url = ''
+                if(this.parmas != ''){
+                    url = this.to_next_url1 + this.parmas
+                    //处理斜杠问题
+                    let out_url = url.replace("/?","?")
+                    //console.log(url,out_url)
+                    window.open(out_url)
+                }else{
+                    window.open(this.to_next_url1)
+                }
+            },
+            todown(){
+                console.log("APP下载")
+                window.open(this.download_app_url)
+            },
+        },
+    })
+</script>
+
+</html>
